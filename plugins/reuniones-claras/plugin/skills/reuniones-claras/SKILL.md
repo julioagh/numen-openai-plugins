@@ -75,7 +75,7 @@ Record relevant proposals, options or ideas that were discussed but not approved
 
 ## 4. Open questions and pending topics / Preguntas abiertas y pendientes
 
-List questions that need an answer, decisions deferred, missing information and unresolved issues. Include only what the notes present as unresolved; do not add items you derived yourself.
+List questions that need an answer, decisions deferred, missing information and unresolved issues. Include only what the notes present as unresolved; do not add items you derived yourself. Do not add questions about relationships between items that the notes do not mention (for example, whether one task must be finished before another), even when phrased as "I do not assume this".
 
 ## 5. Risks and dependencies / Riesgos y dependencias
 
@@ -91,7 +91,7 @@ Never place a suggestion under agreed next steps or under pending topics.
 
 ## Validation with the `validate_meeting_record` tool
 
-After drafting the result (workflow steps 1-8) and before presenting it, validate the record once with the `validate_meeting_record` tool.
+After drafting the result (workflow steps 1-8) and before presenting it, validate the record once with the `validate_meeting_record` tool. Always validate, even when the notes are very short or the user asked for something you declined (for example, to invent data). Do not skip it because the record looks simple.
 
 The tool is a read-only, deterministic consistency check. It does not interpret the notes, does not decide what was agreed, and does not store anything. You remain fully responsible for interpreting the notes and for every classification.
 

@@ -63,6 +63,8 @@ describe('coherencia del paquete del plugin con el servidor', () => {
     expect(skill).toContain("Do not use today's date or add context the notes lack")
     expect(skill).toContain('Do not infer dependencies between items')
     expect(skill).toContain('No current date, inferred dependency or invented context was added')
+    expect(skill).toContain('Always validate, even when the notes are very short')
+    expect(skill).toContain('Do not add questions about relationships between items')
   })
 
   it('las reglas centrales siguen numeradas sin saltos', () => {
