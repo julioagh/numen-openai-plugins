@@ -277,15 +277,15 @@ describe('propiedades del motor', () => {
     const en = run({ language: 'en', commitments: [{ description: 'x', owner: null, due_date: null, status: null }] })
     expect(es.issues[0].message).toMatch(/responsable/)
     expect(en.issues[0].message).toMatch(/owner/)
-    expect(es.summary).toMatch(/no confirma/)
-    expect(en.summary).toMatch(/does not confirm/)
+    expect(es.summary).toMatch(/no significa que las decisiones, las clasificaciones o la evidencia sean correctas/)
+    expect(en.summary).toMatch(/does not mean the decisions, classifications or evidence are correct/)
   })
 
   it('el resumen siempre aclara las limitaciones, incluso sin observaciones', () => {
     const r = run({ decisions: [{ description: 'a', classification: 'confirmed', evidence: goodEvidence }] })
     expect(r.issues).toEqual([])
     expect(r.summary).toMatch(/sin observaciones/)
-    expect(r.summary).toMatch(/no confirma que los acuerdos hayan ocurrido/)
+    expect(r.summary).toMatch(/ni que los acuerdos hayan ocurrido realmente/)
   })
 
   it('el orden de las observaciones es estable', () => {

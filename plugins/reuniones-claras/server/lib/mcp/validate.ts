@@ -34,12 +34,12 @@ const SUMMARY = {
   es: {
     none: 'Validación estructural completada sin observaciones.',
     some: 'Validación estructural completada. Errores: {e}. Advertencias: {w}. Avisos informativos: {i}.',
-    note: 'Esta validación solo revisa la consistencia del registro; no confirma que los acuerdos hayan ocurrido realmente.',
+    note: 'Esta validación solo revisa la coherencia del registro. Que no haya hallazgos no significa que las decisiones, las clasificaciones o la evidencia sean correctas, ni que los acuerdos hayan ocurrido realmente.',
   },
   en: {
     none: 'Structural validation completed with no findings.',
     some: 'Structural validation completed. Errors: {e}. Warnings: {w}. Informational notes: {i}.',
-    note: 'This validation only checks the record for consistency; it does not confirm that the agreements actually took place.',
+    note: 'This validation only checks the record for consistency. No findings does not mean the decisions, classifications or evidence are correct, nor that the agreements actually took place.',
   },
 } as const
 
