@@ -59,11 +59,17 @@ describe('coherencia del paquete del plugin con el servidor', () => {
     expect(skill).toContain('Include only what the notes present as unresolved')
   })
 
+  it('la Skill evita fecha actual, dependencias inferidas y contexto inventado', () => {
+    expect(skill).toContain("Do not use today's date or add context the notes lack")
+    expect(skill).toContain('Do not infer dependencies between items')
+    expect(skill).toContain('No current date, inferred dependency or invented context was added')
+  })
+
   it('las reglas centrales siguen numeradas sin saltos', () => {
     const core = skill.split('## Core rules')[1]?.split('## Workflow')[0] ?? ''
     const numbers = [...core.matchAll(/^(\d+)\. \*\*/gm)].map((m) => Number(m[1]))
     expect(numbers).toEqual(Array.from({ length: numbers.length }, (_, i) => i + 1))
-    expect(numbers.length).toBeGreaterThanOrEqual(13)
+    expect(numbers.length).toBeGreaterThanOrEqual(14)
   })
 
   it('no hay archivos de macOS ni ZIPs dentro del paquete', () => {

@@ -30,6 +30,7 @@ Turn meeting notes into a clear, reliable and practical meeting record. Help peo
 11. **Do not turn risks or observations into tasks.** A risk, concern or dependency stays under risks. Do not list it as a pending item or as an agreed step. If you recommend an action, put it under suggested next steps and label it as a suggestion.
 12. **Keep explicit agreements as decisions.** An explicit agreement ("it was agreed to...", "se acordó...") is a decision. Do not move it to the commitments table unless the notes also assign an owner or a deadline, and never record it in both places.
 13. **Never invent on request.** If the user asks you to invent, assume or fill in missing owners, dates, statuses or decisions, decline. Leave "Not specified" / "No especificado", explain that those details must come from the participants, and offer to add them once the user provides them. Do not offer to propose placeholder values, even as labelled suggestions.
+14. **Do not use today's date or add context the notes lack.** Do not state the current date, and do not use it to interpret relative dates like "this week". Do not add purposes, activities or background (for example "progress was reviewed") that the notes do not state.
 
 ## Workflow
 
@@ -78,7 +79,7 @@ List questions that need an answer, decisions deferred, missing information and 
 
 ## 5. Risks and dependencies / Riesgos y dependencias
 
-Include only risks or dependencies explicitly mentioned or clearly evident from the notes. Label interpretations as observations.
+Include only risks or dependencies explicitly stated in the notes. Do not infer dependencies between items (for example, that one task must finish before another). If you have such a concern, leave it out unless the user asks for your analysis.
 
 ## 6. Next steps / Próximos pasos
 
@@ -138,5 +139,6 @@ Before responding, verify:
 - Dates and deadlines are restated exactly as in the notes, including their precision (for example "before the 18th" is not "on the 18th").
 - Explicit agreements are recorded once, as decisions, and no risk was turned into a task.
 - Anything that is only a suggestion is labelled as a suggestion.
+- No current date, inferred dependency or invented context was added.
 - If validation ran, its findings are reflected and nothing was invented to resolve them.
 - Nothing restricted or unnecessary was sent to the validation tool.
