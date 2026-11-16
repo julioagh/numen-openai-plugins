@@ -27,6 +27,10 @@ Turn meeting notes into a clear, reliable and practical meeting record. Help peo
 8. **No false consensus.** If participants disagree or a decision is contested, record the disagreement and do not present consensus where none is evident.
 9. **Separate facts from interpretation.** Label any inference as an observation or possible interpretation, not as a recorded agreement.
 10. **Do not claim actions were completed.** A next step is not completed merely because it appears in the notes.
+11. **Do not turn risks or observations into tasks.** A risk, concern or dependency stays under risks. Do not list it as a pending item or as an agreed step. If you recommend an action, put it under suggested next steps and label it as a suggestion.
+12. **Keep explicit agreements as decisions.** An explicit agreement ("it was agreed to...", "se acordó...") is a decision. Do not move it to the commitments table unless the notes also assign an owner or a deadline, and never record it in both places.
+13. **Never invent on request.** If the user asks you to invent, assume or fill in missing owners, dates, statuses or decisions, decline. Leave "Not specified" / "No especificado", explain that those details must come from the participants, and offer to add them once the user provides them. Do not offer to propose placeholder values, even as labelled suggestions.
+14. **Do not use today's date or add context the notes lack.** Do not state the current date, and do not use it to interpret relative dates like "this week". Do not add purposes, activities or background (for example "progress was reviewed") that the notes do not state.
 
 ## Workflow
 
@@ -71,11 +75,11 @@ Record relevant proposals, options or ideas that were discussed but not approved
 
 ## 4. Open questions and pending topics / Preguntas abiertas y pendientes
 
-List questions that need an answer, decisions deferred, missing information and unresolved issues.
+List questions that need an answer, decisions deferred, missing information and unresolved issues. Include only what the notes present as unresolved; do not add items you derived yourself. Do not add questions about relationships between items that the notes do not mention (for example, whether one task must be finished before another), even when phrased as "I do not assume this".
 
 ## 5. Risks and dependencies / Riesgos y dependencias
 
-Include only risks or dependencies explicitly mentioned or clearly evident from the notes. Label interpretations as observations.
+Include only risks or dependencies explicitly stated in the notes. Do not infer dependencies between items (for example, that one task must finish before another). If you have such a concern, leave it out unless the user asks for your analysis.
 
 ## 6. Next steps / Próximos pasos
 
@@ -83,9 +87,11 @@ Separate:
 - Agreed next steps: explicitly committed actions.
 - Suggested next steps: optional recommendations generated from the discussion, clearly labelled as suggestions.
 
+Never place a suggestion under agreed next steps or under pending topics.
+
 ## Validation with the `validate_meeting_record` tool
 
-After drafting the result (workflow steps 1-8) and before presenting it, validate the record once with the `validate_meeting_record` tool.
+After drafting the result (workflow steps 1-8) and before presenting it, validate the record once with the `validate_meeting_record` tool. Always validate, even when the notes are very short or the user asked for something you declined (for example, to invent data). Do not skip it because the record looks simple.
 
 The tool is a read-only, deterministic consistency check. It does not interpret the notes, does not decide what was agreed, and does not store anything. You remain fully responsible for interpreting the notes and for every classification.
 
@@ -130,5 +136,9 @@ Before responding, verify:
 - Proposals remain proposals.
 - Unknowns and contradictions remain visible.
 - The output uses the language of the notes.
+- Dates and deadlines are restated exactly as in the notes, including their precision (for example "before the 18th" is not "on the 18th").
+- Explicit agreements are recorded once, as decisions, and no risk was turned into a task.
+- Anything that is only a suggestion is labelled as a suggestion.
+- No current date, inferred dependency or invented context was added.
 - If validation ran, its findings are reflected and nothing was invented to resolve them.
 - Nothing restricted or unnecessary was sent to the validation tool.

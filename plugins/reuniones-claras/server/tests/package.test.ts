@@ -50,6 +50,30 @@ describe('coherencia del paquete del plugin con el servidor', () => {
     expect(skill).toMatch(/not_started.*in_progress.*blocked.*completed.*cancelled/s)
   })
 
+  it('la Skill aclara cómo tratar riesgos, acuerdos explícitos y peticiones de inventar datos', () => {
+    expect(skill).toContain('Do not turn risks or observations into tasks')
+    expect(skill).toContain('Keep explicit agreements as decisions')
+    expect(skill).toContain('Never invent on request')
+    expect(skill).toContain('Do not offer to propose placeholder values')
+    expect(skill).toContain('Never place a suggestion under agreed next steps or under pending topics')
+    expect(skill).toContain('Include only what the notes present as unresolved')
+  })
+
+  it('la Skill evita fecha actual, dependencias inferidas y contexto inventado', () => {
+    expect(skill).toContain("Do not use today's date or add context the notes lack")
+    expect(skill).toContain('Do not infer dependencies between items')
+    expect(skill).toContain('No current date, inferred dependency or invented context was added')
+    expect(skill).toContain('Always validate, even when the notes are very short')
+    expect(skill).toContain('Do not add questions about relationships between items')
+  })
+
+  it('las reglas centrales siguen numeradas sin saltos', () => {
+    const core = skill.split('## Core rules')[1]?.split('## Workflow')[0] ?? ''
+    const numbers = [...core.matchAll(/^(\d+)\. \*\*/gm)].map((m) => Number(m[1]))
+    expect(numbers).toEqual(Array.from({ length: numbers.length }, (_, i) => i + 1))
+    expect(numbers.length).toBeGreaterThanOrEqual(14)
+  })
+
   it('no hay archivos de macOS ni ZIPs dentro del paquete', () => {
     const found: string[] = []
     const walk = (dir: string) => {
