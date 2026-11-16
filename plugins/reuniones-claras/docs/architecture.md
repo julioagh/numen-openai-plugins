@@ -104,7 +104,7 @@ Cada solicitud atraviesa estas capas, en este orden. Todo ocurre en memoria y no
 | `lib/mcp/codes.ts` | Catálogo de códigos, severidades y mensajes en español e inglés. |
 | `lib/mcp/dates.ts`, `normalize.ts`, `restricted.ts` | Clasificación de fechas, normalización de texto y barrera de números de tarjeta. |
 | `lib/mcp/limits.ts` | Límites de entrada. |
-| `tests/` | 140 pruebas automatizadas (Vitest). |
+| `tests/` | Pruebas automatizadas (Vitest): reglas, esquema, protocolo, HTTP, privacidad y paquete. |
 | `scripts/e2e.mjs` | Prueba de extremo a extremo con el cliente MCP oficial, contra un servidor local. |
 | `scripts/smoke.mjs` | Verificación remota contra una URL desplegada (`MCP_URL=https://<host>/mcp npm run smoke`). |
 
