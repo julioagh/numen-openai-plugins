@@ -1,0 +1,92 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1040 640" width="1040" height="640" role="img" aria-labelledby="t d" font-family="Montserrat, 'Open Sans', system-ui, -apple-system, 'Segoe UI', sans-serif">
+  <title id="t">Reuniones Claras: dónde vive cada pieza</title>
+  <desc id="d">El usuario comparte sus notas con ChatGPT o Claude, donde un modelo las interpreta siguiendo la Skill del plugin. El modelo envía solo un registro estructurado al servidor MCP de Numen, alojado en Vercel, que aplica reglas determinísticas y devuelve hallazgos al modelo. El plugin es un paquete que referencia el servidor y las páginas web de Numen.</desc>
+  <defs>
+    <marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#4b2e83"/></marker>
+    <marker id="g" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#6c757d"/></marker>
+  </defs>
+  <rect width="1040" height="640" fill="#ffffff"/>
+  <text x="520" y="40" text-anchor="middle" font-size="22" font-weight="700" fill="#4b2e83">Reuniones Claras: dónde vive cada pieza</text>
+
+  <!-- Usuario -->
+  <rect x="24" y="133" width="150" height="96" rx="12" fill="#ffffff" stroke="#4b2e83" stroke-width="2"/>
+  <text x="99" y="170" text-anchor="middle" font-size="16" font-weight="700" fill="#212529">Usuario</text>
+  <text x="99" y="194" text-anchor="middle" font-size="13" fill="#495057">comparte sus notas</text>
+  <text x="99" y="212" text-anchor="middle" font-size="13" fill="#495057">de reunión</text>
+
+  <!-- ChatGPT / Claude -->
+  <rect x="270" y="70" width="330" height="430" rx="16" fill="#f6f2fb" stroke="#4b2e83" stroke-width="2"/>
+  <text x="435" y="100" text-anchor="middle" font-size="16" font-weight="700" fill="#4b2e83">ChatGPT / Claude</text>
+  <text x="435" y="119" text-anchor="middle" font-size="12.5" fill="#495057">OpenAI / Anthropic · procesan las notas completas</text>
+
+  <rect x="294" y="138" width="282" height="86" rx="10" fill="#ffffff" stroke="#4b2e83" stroke-width="1.5"/>
+  <text x="435" y="168" text-anchor="middle" font-size="15" font-weight="700" fill="#212529">Modelo de lenguaje</text>
+  <text x="435" y="190" text-anchor="middle" font-size="13" fill="#495057">Interpreta las notas siguiendo la</text>
+  <text x="435" y="208" text-anchor="middle" font-size="13" fill="#495057">Skill y clasifica cada elemento</text>
+
+  <rect x="294" y="244" width="282" height="76" rx="10" fill="#ffffff" stroke="#4b2e83" stroke-width="1.5"/>
+  <text x="435" y="272" text-anchor="middle" font-size="15" font-weight="700" fill="#212529">Skill · SKILL.md</text>
+  <text x="435" y="294" text-anchor="middle" font-size="13" fill="#495057">Instrucciones en texto: no es código;</text>
+  <text x="435" y="310" text-anchor="middle" font-size="13" fill="#495057">las ejecuta el modelo</text>
+
+  <rect x="294" y="352" width="282" height="128" rx="10" fill="#ffffff" stroke="#6c757d" stroke-width="1.5" stroke-dasharray="6 4"/>
+  <text x="435" y="378" text-anchor="middle" font-size="15" font-weight="700" fill="#212529">Plugin (paquete ZIP)</text>
+  <text x="435" y="400" text-anchor="middle" font-size="13" fill="#495057">plugin.json · mcp.json</text>
+  <text x="435" y="418" text-anchor="middle" font-size="13" fill="#495057">SKILL.md · icono</text>
+  <text x="435" y="442" text-anchor="middle" font-size="12.5" fill="#495057">Se sube a OpenAI. Solo describe y</text>
+  <text x="435" y="460" text-anchor="middle" font-size="12.5" fill="#495057">enlaza las demás piezas.</text>
+
+  <!-- Numen / Vercel: servidor MCP -->
+  <rect x="740" y="70" width="276" height="270" rx="16" fill="#effcf8" stroke="#1a9c81" stroke-width="2"/>
+  <text x="878" y="100" text-anchor="middle" font-size="16" font-weight="700" fill="#14705c">Numen · Vercel</text>
+  <text x="878" y="119" text-anchor="middle" font-size="12" fill="#495057">repo: plugins/reuniones-claras/server</text>
+  <rect x="764" y="138" width="228" height="184" rx="10" fill="#ffffff" stroke="#1a9c81" stroke-width="1.5"/>
+  <text x="878" y="166" text-anchor="middle" font-size="15" font-weight="700" fill="#212529">Servidor MCP</text>
+  <text x="878" y="186" text-anchor="middle" font-size="13" font-weight="600" fill="#14705c">api.numen.la/mcp</text>
+  <text x="878" y="214" text-anchor="middle" font-size="13" fill="#212529">Herramienta</text>
+  <text x="878" y="232" text-anchor="middle" font-size="13" font-weight="600" fill="#212529">validate_meeting_record</text>
+  <text x="878" y="254" text-anchor="middle" font-size="12.5" fill="#495057">21 reglas determinísticas</text>
+  <text x="878" y="276" text-anchor="middle" font-size="12.5" fill="#495057">Sin IA · sin base de datos</text>
+  <text x="878" y="294" text-anchor="middle" font-size="12.5" fill="#495057">Sin almacenar lo recibido</text>
+
+  <!-- Sitio web -->
+  <rect x="740" y="372" width="276" height="128" rx="16" fill="#fff4f2" stroke="#d9503f" stroke-width="2"/>
+  <text x="878" y="402" text-anchor="middle" font-size="16" font-weight="700" fill="#b23a2b">Sitio web · www.numen.la</text>
+  <text x="878" y="421" text-anchor="middle" font-size="12" fill="#495057">repo: landing-page</text>
+  <text x="878" y="448" text-anchor="middle" font-size="12.5" fill="#212529">Producto · documentación · soporte</text>
+  <text x="878" y="468" text-anchor="middle" font-size="12.5" fill="#212529">Política de privacidad · términos</text>
+
+  <!-- 1: usuario -> modelo -->
+  <path d="M174 181 H294" stroke="#4b2e83" stroke-width="2.2" fill="none" marker-end="url(#a)"/>
+  <text x="222" y="162" text-anchor="middle" font-size="12" font-weight="700" fill="#4b2e83">1 · notas</text>
+  <text x="222" y="204" text-anchor="middle" font-size="12" font-weight="700" fill="#4b2e83">completas</text>
+
+  <!-- 2: modelo -> servidor -->
+  <path d="M576 160 H764" stroke="#4b2e83" stroke-width="2.2" fill="none" marker-end="url(#a)"/>
+  <text x="670" y="128" text-anchor="middle" font-size="12" font-weight="700" fill="#4b2e83">2 · solo el registro</text>
+  <text x="670" y="144" text-anchor="middle" font-size="12" font-weight="700" fill="#4b2e83">estructurado (POST)</text>
+
+  <!-- 3: servidor -> modelo -->
+  <path d="M764 204 H576" stroke="#4b2e83" stroke-width="2.2" fill="none" marker-end="url(#a)"/>
+  <text x="670" y="226" text-anchor="middle" font-size="12" font-weight="700" fill="#4b2e83">3 · hallazgos de</text>
+  <text x="670" y="242" text-anchor="middle" font-size="12" font-weight="700" fill="#4b2e83">la validación</text>
+
+  <!-- Referencias (punteadas) -->
+  <path d="M576 416 H640 V296 H764" stroke="#6c757d" stroke-width="1.8" stroke-dasharray="6 4" fill="none" marker-end="url(#g)"/>
+  <text x="650" y="322" font-size="11.5" fill="#495057">mcp.json:</text>
+  <text x="650" y="337" font-size="11.5" fill="#495057">url del</text>
+  <text x="650" y="352" font-size="11.5" fill="#495057">servidor</text>
+  <path d="M576 462 H740" stroke="#6c757d" stroke-width="1.8" stroke-dasharray="6 4" fill="none" marker-end="url(#g)"/>
+  <text x="658" y="482" text-anchor="middle" font-size="11.5" fill="#495057">URLs de privacidad</text>
+  <text x="658" y="497" text-anchor="middle" font-size="11.5" fill="#495057">y soporte</text>
+
+  <!-- Frontera de datos -->
+  <rect x="270" y="522" width="746" height="42" rx="10" fill="#fff4f2" stroke="#ff7765" stroke-width="1.5"/>
+  <text x="643" y="548" text-anchor="middle" font-size="13.5" font-weight="700" fill="#b23a2b">Las notas completas no llegan a Numen: se quedan dentro de ChatGPT / Claude.</text>
+
+  <!-- Leyenda -->
+  <path d="M30 600 H80" stroke="#4b2e83" stroke-width="2.2" marker-end="url(#a)"/>
+  <text x="90" y="604" font-size="12.5" fill="#212529">Datos que viajan en una conversación</text>
+  <path d="M410 600 H460" stroke="#6c757d" stroke-width="1.8" stroke-dasharray="6 4" marker-end="url(#g)"/>
+  <text x="470" y="604" font-size="12.5" fill="#212529">Referencia declarada en el paquete (no viaja con los datos)</text>
+</svg>
