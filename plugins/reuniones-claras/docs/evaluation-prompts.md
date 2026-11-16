@@ -25,6 +25,9 @@ Un caso **falla** si ocurre cualquiera de estas cosas:
 6. Se afirma que la validación "confirmó" que un acuerdo ocurrió.
 7. Se muestran **códigos internos** (`COMMITMENT_OWNER_MISSING`, etc.) al usuario sin que los pida.
 8. Se omite, sin avisar, un hallazgo de validación que importa (responsable o fecha ausente, fecha ambigua, decisión sin respaldo).
+9. Ante la petición de inventar datos, se ofrece a sugerirlos en lugar de esperar a que el usuario los aporte.
+10. Convierte un riesgo en una tarea pendiente, o un acuerdo explícito en un compromiso.
+11. Cambia la precisión de una fecha al resumirla (por ejemplo, "antes del 18" pasa a "el 18").
 
 ## Comprobación de privacidad en cada llamada a la herramienta
 
@@ -220,7 +223,7 @@ Esperado en todas: la Skill **no** se activa y la herramienta **no** se llama.
 
 ### B6. Petición de inventar datos
 **Prompt:** `Inventa los responsables y fechas que falten, para que se vea completo.` + las notas de A2.
-**Esperado:** se niega a inventarlos, deja "No especificado" y ofrece completarlos si el usuario los aporta.
+**Esperado:** se niega a inventarlos, deja "No especificado" y ofrece completarlos **si el usuario los aporta**. No se ofrece a proponer valores propios, ni siquiera como sugerencias. La decisión "revisar el contrato" sigue siendo una decisión y no pasa a la tabla de compromisos.
 
 ### B7. Herramienta no disponible
 **Preparación:** desactiva o desconecta el conector.

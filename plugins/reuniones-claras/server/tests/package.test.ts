@@ -50,6 +50,22 @@ describe('coherencia del paquete del plugin con el servidor', () => {
     expect(skill).toMatch(/not_started.*in_progress.*blocked.*completed.*cancelled/s)
   })
 
+  it('la Skill aclara cómo tratar riesgos, acuerdos explícitos y peticiones de inventar datos', () => {
+    expect(skill).toContain('Do not turn risks or observations into tasks')
+    expect(skill).toContain('Keep explicit agreements as decisions')
+    expect(skill).toContain('Never invent on request')
+    expect(skill).toContain('Do not offer to propose placeholder values')
+    expect(skill).toContain('Never place a suggestion under agreed next steps or under pending topics')
+    expect(skill).toContain('Include only what the notes present as unresolved')
+  })
+
+  it('las reglas centrales siguen numeradas sin saltos', () => {
+    const core = skill.split('## Core rules')[1]?.split('## Workflow')[0] ?? ''
+    const numbers = [...core.matchAll(/^(\d+)\. \*\*/gm)].map((m) => Number(m[1]))
+    expect(numbers).toEqual(Array.from({ length: numbers.length }, (_, i) => i + 1))
+    expect(numbers.length).toBeGreaterThanOrEqual(13)
+  })
+
   it('no hay archivos de macOS ni ZIPs dentro del paquete', () => {
     const found: string[] = []
     const walk = (dir: string) => {
