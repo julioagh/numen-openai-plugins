@@ -99,6 +99,31 @@ describe('información de revisión de OpenAI (plugin.json)', () => {
     }
   })
 
+  it('los prompts de los casos positivos coinciden con las notas del conjunto de evaluación', () => {
+    const doc = read('docs', 'evaluation-prompts.md')
+    const notesFor = (id: string): string => {
+      const start = doc.indexOf(`### ${id}.`)
+      expect(start, `sección ${id} en evaluation-prompts.md`).toBeGreaterThan(-1)
+      const quote: string[] = []
+      for (const line of doc.slice(start).split('\n').slice(1)) {
+        if (line.startsWith('>')) quote.push(line.replace(/^>\s?/, ''))
+        else if (quote.length) break
+      }
+      return quote.join('\n')
+    }
+    ;['D1', 'D2', 'A1', 'A2', 'A3'].forEach((id, i) => {
+      const prompt: string = cases.positive[i].prompt
+      expect(prompt.split('\n\n').slice(1).join('\n\n'), `notas del caso ${id}`).toBe(notesFor(id))
+    })
+  })
+
+  it('el caso 1 usa fechas inequívocas, para que sea un caso limpio', () => {
+    const notes: string = cases.positive[0].prompt
+    expect(notes).not.toMatch(/\bantes del? \d/i)
+    expect(notes).toContain('el 20 de noviembre de 2026')
+    expect(notes).toContain('el 18 de noviembre de 2026')
+  })
+
   it('no hay prompts duplicados', () => {
     const prompts = [...cases.positive, ...cases.negative].map((c: any) => c.prompt)
     expect(new Set(prompts).size).toBe(prompts.length)
