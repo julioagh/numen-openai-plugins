@@ -54,7 +54,9 @@ Fuente: documentación de OpenAI (Plugins), consultada en noviembre de 2026.
 |---|---|
 | Subir el ZIP y elegir la identidad verificada | Pendiente de publicación |
 | Conectar el servidor (**With MCP**), completar la verificación de dominio y pulsar *Scan Tools* | Pendiente de publicación |
-| Preparar prompts de prueba y respuestas esperadas | Pendiente (propietario) |
+| Casos de prueba: 5 positivos y 3 negativos | Borrador en `plugin/plugin.json` · **pendiente de verificar con ejecuciones reales** (OpenAI exige haberlos ejecutado) |
+| Vídeo de demostración (obligatorio para MCP) | Guion preparado en `docs/demo-video-script.md` · pendiente de grabar y de añadir `review.demo_recording_url` |
+| Notas de versión | En `plugin/plugin.json` (`publication.release_notes`) |
 | Enviar a revisión | Pendiente de publicación |
 
 ## Riesgos a tener presentes

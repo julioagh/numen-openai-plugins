@@ -50,7 +50,7 @@ Al desplegar los argumentos enviados, verifica:
 > Reunión de seguimiento del proyecto Atlas, 12 de noviembre de 2026. Asistentes: Ana, Luis y Marta.
 > - Se aprobó migrar el servidor de pruebas a la nube en diciembre, porque reduce el costo de mantenimiento.
 > - Luis se encarga de preparar el plan de migración y lo entrega el 20 de noviembre de 2026.
-> - Marta enviará el informe de costos al equipo antes del 18 de noviembre de 2026.
+> - Marta enviará el informe de costos al equipo el 18 de noviembre de 2026.
 > - Queda pendiente definir quién aprueba el presupuesto final.
 > - Riesgo: el proveedor podría no tener capacidad en diciembre.
 
@@ -260,3 +260,5 @@ El portal pide prompts de prueba con sus respuestas esperadas. Candidatos, que *
 | **D2** (notas en inglés) | Respuesta en inglés; "by Friday" conservado y marcado por confirmar. |
 | **A1** (propuestas sin decisión) | Indica que no hay decisiones explícitas y lista las propuestas como no aprobadas. |
 | **N1** (consejos sobre reuniones) | El plugin no se activa. |
+
+Los casos ya están redactados en el formato del portal dentro de `plugin/plugin.json` (`review.test_cases`): 5 positivos y 3 negativos. Revísalos allí.

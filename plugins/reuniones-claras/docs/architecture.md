@@ -104,7 +104,7 @@ Cada solicitud atraviesa estas capas, en este orden. Todo ocurre en memoria y no
 | `lib/mcp/codes.ts` | Catálogo de códigos, severidades y mensajes en español e inglés. |
 | `lib/mcp/dates.ts`, `normalize.ts`, `restricted.ts` | Clasificación de fechas, normalización de texto y barrera de números de tarjeta. |
 | `lib/mcp/limits.ts` | Límites de entrada. |
-| `tests/` | 129 pruebas automatizadas (Vitest). |
+| `tests/` | 140 pruebas automatizadas (Vitest). |
 | `scripts/e2e.mjs` | Prueba de extremo a extremo con el cliente MCP oficial, contra un servidor local. |
 | `scripts/smoke.mjs` | Verificación remota contra una URL desplegada (`MCP_URL=https://<host>/mcp npm run smoke`). |
 
@@ -123,7 +123,7 @@ Cada solicitud atraviesa estas capas, en este orden. Todo ocurre en memoria y no
 | Elemento | Estado |
 |---|---|
 | Servidor MCP y herramienta | Implementado y **desplegado** en Vercel |
-| Pruebas | 129 automatizadas, extremo a extremo con el cliente oficial y verificación remota 10/10 en `api.numen.la` |
+| Pruebas | 140 automatizadas, extremo a extremo con el cliente oficial y verificación remota 10/10 en `api.numen.la` |
 | Paquete del plugin (manifiesto, `mcp.json`, Skill) | Implementado (ZIP v0.2.0) |
 | Dominio `api.numen.la` | Configurado, solo DNS (sin proxy de Cloudflare) |
 | Límite de frecuencia | Configurado en el Firewall de Vercel; el umbral exacto no está verificado |
