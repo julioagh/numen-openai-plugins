@@ -10,7 +10,7 @@ Documento generado a partir del catálogo `server/lib/mcp/codes.ts`. Los código
 | warning | Falta información o hay algo que conviene confirmar con los participantes. | ninguno |
 | info | Observación informativa. | ninguno |
 
-`valid` es `true` cuando **no hay ningún** hallazgo de severidad `error`. Que `valid` sea `true` **no significa** que los acuerdos hayan ocurrido realmente: la herramienta solo revisa la consistencia del registro.
+`valid` es `true` cuando **no hay ningún** hallazgo de severidad `error`. Que `valid` sea `true` **no significa** que las decisiones, las clasificaciones o la evidencia sean correctas, ni que los acuerdos hayan ocurrido realmente: la herramienta solo revisa la coherencia del registro.
 
 ## Catálogo
 

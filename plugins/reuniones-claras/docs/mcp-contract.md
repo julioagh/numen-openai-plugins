@@ -81,7 +81,7 @@ La respuesta incluye también `content[0].text` con el mismo resultado en texto 
 // structuredContent
 {
   "valid": true,
-  "summary": "Validación estructural completada. Errores: 0. Advertencias: 2. Avisos informativos: 1. Esta validación solo revisa la consistencia del registro; no confirma que los acuerdos hayan ocurrido realmente.",
+  "summary": "Validación estructural completada. Errores: 0. Advertencias: 2. Avisos informativos: 1. Esta validación solo revisa la coherencia del registro. Que no haya hallazgos no significa que las decisiones, las clasificaciones o la evidencia sean correctas, ni que los acuerdos hayan ocurrido realmente.",
   "issues": [
     { "code": "COMMITMENT_OWNER_MISSING", "severity": "warning", "item": "commitments[0]", "field": "owner", "message": "...", "recommendation": "..." },
     { "code": "COMMITMENT_DUE_DATE_AMBIGUOUS", "severity": "warning", "item": "commitments[0]", "field": "due_date", "message": "...", "recommendation": "..." },
