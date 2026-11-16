@@ -67,3 +67,15 @@ Nada de esto se ha hecho. Cada paso requiere autorización expresa.
 ## Revertir
 
 En Vercel, *Instant Rollback* al despliegue anterior. El plugin en OpenAI no cambia por un rollback del servidor, pero sí lo reflejarán sus análisis diarios.
+
+## Estado del despliegue (16 de noviembre de 2026)
+
+| Elemento | Estado |
+|---|---|
+| Proyecto de Vercel | `reuniones-claras-mcp`, plan Hobby, Root Directory `plugins/reuniones-claras/server`, rama de producción `main` |
+| URLs | `https://api.numen.la/mcp` y `https://reuniones-claras-mcp.vercel.app/mcp` |
+| DNS | CNAME `api` solo DNS (sin proxy de Cloudflare) |
+| Verificación remota (`npm run smoke`) | 10/10 en ambas URLs |
+| Límite de frecuencia | Regla `Limite MCP`: 60 s, 300 solicitudes por IP, 429. Se observó un 429; el umbral exacto no está verificado |
+| Registros de Vercel | Pendiente de revisar que el contenido enviado no aparece |
+| Verificación de dominio de OpenAI | Pendiente (el token lo muestra el portal) |
