@@ -25,6 +25,10 @@ describe('protocolo MCP (Streamable HTTP, sin estado)', () => {
     const tool = tools[0]
     expect(tool.name).toBe(TOOL_NAME)
     expect(tool.description.length).toBeGreaterThan(50)
+    // La descripción debe aclarar lo que la herramienta NO afirma (evita que el modelo la presente como verificación de contenido).
+    expect(tool.description).toMatch(/ausencia de hallazgos no significa que el contenido sea correcto/)
+    expect(tool.description).toMatch(/no verifica la veracidad/)
+    expect(tool.description).toMatch(/does not verify decisions or evidence/)
     expect(tool.annotations).toMatchObject({ readOnlyHint: true, destructiveHint: false, openWorldHint: false })
     expect(tool.inputSchema.required).toContain('language')
     expect(tool.inputSchema.additionalProperties).toBe(false)

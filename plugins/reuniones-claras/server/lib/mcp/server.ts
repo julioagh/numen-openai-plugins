@@ -8,8 +8,8 @@ export const SERVER_VERSION = '0.2.0'
 export const TOOL_NAME = 'validate_meeting_record'
 
 export const TOOL_DESCRIPTION =
-  'Valida la consistencia y completitud de un registro estructurado de reunión. Detecta clasificaciones inconsistentes, compromisos incompletos, responsables o fechas no especificados, estados ausentes y temas pendientes que podrían confundirse con decisiones. Es de solo lectura: no crea ni modifica registros, no almacena lo recibido y no interpreta las notas. ' +
-  'Validates the consistency and completeness of a structured meeting record (Spanish or English). Read-only and deterministic: it reports findings and never fills in missing owners, dates or decisions. ' +
+  'Valida la consistencia y completitud de un registro estructurado de reunión. Detecta clasificaciones inconsistentes, compromisos incompletos, responsables o fechas no especificados, estados ausentes y temas pendientes que podrían confundirse con decisiones. Es de solo lectura: no crea ni modifica registros, no almacena lo recibido y no interpreta las notas. La ausencia de hallazgos no significa que el contenido sea correcto: solo que el registro es coherente; no verifica la veracidad de las decisiones ni de la evidencia. ' +
+  'Validates the consistency and completeness of a structured meeting record (Spanish or English). Read-only and deterministic: it reports findings and never fills in missing owners, dates or decisions. No findings does not mean the content is correct, only that the record is consistent; it does not verify decisions or evidence. ' +
   'Enviar solo campos estructurados y citas breves, nunca la transcripción completa, contraseñas, números de tarjeta, datos de salud ni identificadores oficiales.'
 
 const RESTRICTED_MESSAGE = {

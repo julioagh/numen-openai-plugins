@@ -6,7 +6,7 @@ Transporte: Streamable HTTP, **sin estado** (sin `Mcp-Session-Id`). Cada solicit
 
 ## Herramienta `validate_meeting_record`
 
-Valida la consistencia y completitud de un registro estructurado de reunión. Es de solo lectura y determinística: **no interpreta las notas, no decide qué se acordó, no modifica ni completa datos y no almacena lo recibido**.
+Valida la consistencia y completitud de un registro estructurado de reunión. Es de solo lectura y determinística: **no interpreta las notas, no decide qué se acordó, no modifica ni completa datos y no almacena lo recibido**. Que no haya hallazgos **no significa que el contenido sea correcto**: solo que el registro es coherente. La herramienta no verifica la veracidad de las decisiones ni de la evidencia (de esta última solo comprueba que exista y que tenga una longitud mínima).
 
 Anotaciones (valores explícitos, como exigen las directrices de OpenAI):
 
