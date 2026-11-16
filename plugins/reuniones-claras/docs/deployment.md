@@ -24,6 +24,7 @@ npm run typecheck    # tipos
 npm test             # pruebas automatizadas (Vitest)
 npm run build        # build de producción
 npm run test:e2e     # extremo a extremo con el cliente MCP oficial (requiere build previo)
+npm run smoke        # verificación remota: MCP_URL=https://<host>/mcp npm run smoke
 ```
 
 ## Generar el ZIP del plugin
@@ -50,7 +51,15 @@ Nada de esto se ha hecho. Cada paso requiere autorización expresa.
 
 ## Después de desplegar
 
-- Probar con el MCP Inspector contra la URL pública.
+- Ejecutar la verificación remota contra la URL pública (antes y después de conectar el dominio):
+
+  ```bash
+  cd plugins/reuniones-claras/server
+  MCP_URL=https://<host>/mcp npm run smoke
+  ```
+
+  Comprueba con el cliente MCP oficial el descubrimiento de la herramienta, su contrato, el rechazo de entradas inválidas y de números de tarjeta, y las respuestas 405, 403, 415 y 413. Si Vercel tiene la protección de despliegues activa, recibirás 401 o una redirección: la verificación debe hacerse contra una URL de producción pública.
+- Probar también con el MCP Inspector contra la URL pública.
 - Confirmar que `GET https://api.numen.la/mcp` devuelve 405 y que un `Origin` ajeno devuelve 403.
 - Revisar los registros de ejecución de Vercel enviando datos con un marcador de prueba y comprobando que no aparece.
 - Solo entonces publicar los cambios de privacidad y términos en la web.
