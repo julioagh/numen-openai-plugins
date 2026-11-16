@@ -24,6 +24,7 @@ npm run typecheck    # tipos
 npm test             # pruebas automatizadas (Vitest)
 npm run build        # build de producción
 npm run test:e2e     # extremo a extremo con el cliente MCP oficial (requiere build previo)
+npm run smoke        # verificación remota: MCP_URL=https://<host>/mcp npm run smoke
 ```
 
 ## Generar el ZIP del plugin
@@ -50,7 +51,15 @@ Nada de esto se ha hecho. Cada paso requiere autorización expresa.
 
 ## Después de desplegar
 
-- Probar con el MCP Inspector contra la URL pública.
+- Ejecutar la verificación remota contra la URL pública (antes y después de conectar el dominio):
+
+  ```bash
+  cd plugins/reuniones-claras/server
+  MCP_URL=https://<host>/mcp npm run smoke
+  ```
+
+  Comprueba con el cliente MCP oficial el descubrimiento de la herramienta, su contrato, el rechazo de entradas inválidas y de números de tarjeta, y las respuestas 405, 403, 415 y 413. Si Vercel tiene la protección de despliegues activa, recibirás 401 o una redirección: la verificación debe hacerse contra una URL de producción pública.
+- Probar también con el MCP Inspector contra la URL pública.
 - Confirmar que `GET https://api.numen.la/mcp` devuelve 405 y que un `Origin` ajeno devuelve 403.
 - Revisar los registros de ejecución de Vercel enviando datos con un marcador de prueba y comprobando que no aparece.
 - Solo entonces publicar los cambios de privacidad y términos en la web.
@@ -58,3 +67,15 @@ Nada de esto se ha hecho. Cada paso requiere autorización expresa.
 ## Revertir
 
 En Vercel, *Instant Rollback* al despliegue anterior. El plugin en OpenAI no cambia por un rollback del servidor, pero sí lo reflejarán sus análisis diarios.
+
+## Estado del despliegue (16 de noviembre de 2026)
+
+| Elemento | Estado |
+|---|---|
+| Proyecto de Vercel | `reuniones-claras-mcp`, plan Hobby, Root Directory `plugins/reuniones-claras/server`, rama de producción `main` |
+| URLs | `https://api.numen.la/mcp` y `https://reuniones-claras-mcp.vercel.app/mcp` |
+| DNS | CNAME `api` solo DNS (sin proxy de Cloudflare) |
+| Verificación remota (`npm run smoke`) | 10/10 en ambas URLs |
+| Límite de frecuencia | Regla `Limite MCP`: 60 s, 300 solicitudes por IP, 429. Se observó un 429; el umbral exacto no está verificado |
+| Registros de Vercel | Pendiente de revisar que el contenido enviado no aparece |
+| Verificación de dominio de OpenAI | Pendiente (el token lo muestra el portal) |

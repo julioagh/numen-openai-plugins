@@ -21,11 +21,11 @@ Fuente: documentación de OpenAI (Plugins), consultada en noviembre de 2026.
 | Herramienta con descripción, esquemas de entrada y salida y anotaciones explícitas (`readOnlyHint: true`, `destructiveHint: false`, `openWorldHint: false`) | Implementado · Probado |
 | Sin autenticación (`auth.type: none`): permitido para servidores de solo lectura y anónimos | Implementado |
 | Minimización de datos: sin `checked_at`, sin identificador de reunión, sin transcripciones, rechazo de números de tarjeta | Implementado · Probado |
-| Pruebas con el cliente MCP oficial | Implementado · Probado (local) |
+| Pruebas con el cliente MCP oficial | Implementado · Probado (local y remoto contra `api.numen.la`: 10/10 el 16 de noviembre de 2026) |
 | Pruebas con ChatGPT real (modo desarrollador) | Pendiente de configuración (propietario) |
-| Dominio público estable `api.numen.la`, HTTPS | Pendiente de configuración y autorización |
-| Despliegue en Vercel y decisión sobre el plan | Pendiente de autorización |
-| Límite de frecuencia en la infraestructura | Pendiente de configuración |
+| Dominio público estable `api.numen.la`, HTTPS | Configurado (CNAME solo DNS, sin proxy de Cloudflare) · Probado |
+| Despliegue en Vercel | Desplegado en el plan Hobby (proyecto `reuniones-claras-mcp`). Sigue abierta la cuestión de los Términos de Vercel sobre uso no comercial |
+| Límite de frecuencia en la infraestructura | Configurado (regla `Limite MCP` en el Firewall de Vercel: 60 s, 300 solicitudes por IP, respuesta 429). Se observó un 429 en pruebas, pero el umbral exacto no está verificado |
 | Verificación de dominio (token que muestra el portal) | Pendiente de configuración |
 
 ## Paquete
