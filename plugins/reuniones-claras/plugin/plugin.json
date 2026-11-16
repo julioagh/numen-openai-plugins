@@ -1,0 +1,30 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "reuniones-claras",
+  "version": "0.2.0",
+  "description": "Convierte notas de reuniones en decisiones, compromisos y próximos pasos claros.",
+  "author": {
+    "name": "Numen Coaching & Consulting"
+  },
+  "extensions": {
+    "com.openai": {
+      "interface": {
+        "displayName": "Reuniones Claras",
+        "shortDescription": "Aclara acuerdos y tareas",
+        "longDescription": "Transforma notas de reuniones en un resumen operativo y fácil de compartir. Identifica decisiones explícitas, compromisos, responsables, fechas, asuntos pendientes, riesgos y próximos pasos. Distingue cuidadosamente entre acuerdos confirmados, propuestas y temas aún abiertos. No inventa decisiones, responsables ni fechas. Responde en español o inglés según el idioma de las notas.",
+        "developerName": "Numen Coaching & Consulting",
+        "category": "Productivity",
+        "capabilities": [],
+        "defaultPrompt": [
+          "Organiza estas notas de reunión en decisiones, compromisos y próximos pasos."
+        ],
+        "websiteURL": "https://www.numen.la/plugins/reuniones-claras",
+        "supportURL": "https://www.numen.la/plugins/reuniones-claras/soporte",
+        "privacyPolicyURL": "https://www.numen.la/plugins/reuniones-claras/privacidad",
+        "termsOfServiceURL": "https://www.numen.la/plugins/reuniones-claras/terminos",
+        "logo": "./assets/reuniones-claras.png",
+        "composerIcon": "./assets/reuniones-claras.png"
+      }
+    }
+  }
+}

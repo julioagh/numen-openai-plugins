@@ -12,6 +12,6 @@ Cada plugin vive en `plugins/<nombre>/` y es autocontenido:
 
 | Plugin | Estado |
 |---|---|
-| [Reuniones Claras](plugins/reuniones-claras/) | En desarrollo |
+| [Reuniones Claras](plugins/reuniones-claras/) | En desarrollo: servidor MCP y paquete implementados; despliegue y publicación pendientes |
 
 El sitio público y la documentación de producto están en https://www.numen.la/plugins
