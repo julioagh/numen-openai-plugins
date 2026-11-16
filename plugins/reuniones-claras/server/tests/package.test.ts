@@ -76,6 +76,18 @@ describe('documentación al día', () => {
     }
   })
 
+  it('los diagramas de arquitectura existen, están bien formados y se referencian desde el documento', () => {
+    const svg = read('docs', 'diagrams', 'architecture.svg')
+    expect(svg).toMatch(/^<svg[\s>]/)
+    expect(svg).toContain('<title')
+    expect(svg).toContain('<desc')
+    expect(svg.trim().endsWith('</svg>')).toBe(true)
+    const architecture = read('docs', 'architecture.md')
+    expect(architecture).toContain('diagrams/architecture.svg')
+    expect(architecture).toContain('```mermaid\nsequenceDiagram')
+    expect(architecture).toContain(TOOL_NAME)
+  })
+
   it('la documentación del contrato menciona los límites reales', () => {
     const contract = read('docs', 'mcp-contract.md')
     expect(contract).toContain(String(LIMITS.MAX_ITEMS_PER_LIST))
