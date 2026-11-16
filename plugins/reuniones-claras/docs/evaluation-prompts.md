@@ -257,3 +257,5 @@ El portal pide prompts de prueba con sus respuestas esperadas. Candidatos, que *
 | **D2** (notas en inglés) | Respuesta en inglés; "by Friday" conservado y marcado por confirmar. |
 | **A1** (propuestas sin decisión) | Indica que no hay decisiones explícitas y lista las propuestas como no aprobadas. |
 | **N1** (consejos sobre reuniones) | El plugin no se activa. |
+
+Los casos ya están redactados en el formato del portal dentro de `plugin/plugin.json` (`review.test_cases`): 5 positivos y 3 negativos. Revísalos allí.

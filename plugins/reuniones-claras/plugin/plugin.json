@@ -24,6 +24,61 @@
         "termsOfServiceURL": "https://www.numen.la/plugins/reuniones-claras/terminos",
         "logo": "./assets/reuniones-claras.png",
         "composerIcon": "./assets/reuniones-claras.png"
+      },
+      "review": {
+        "test_cases": {
+          "positive": [
+            {
+              "description": "Organizar notas claras en español: una decisión confirmada, compromisos con responsable y fecha, un pendiente y un riesgo.",
+              "prompt": "Organiza estas notas de reunión en decisiones, compromisos y próximos pasos:\n\nReunión de seguimiento del proyecto Atlas, 12 de noviembre de 2026. Asistentes: Ana, Luis y Marta.\n- Se aprobó migrar el servidor de pruebas a la nube en diciembre, porque reduce el costo de mantenimiento.\n- Luis se encarga de preparar el plan de migración y lo entrega el 20 de noviembre de 2026.\n- Marta enviará el informe de costos al equipo antes del 18 de noviembre de 2026.\n- Queda pendiente definir quién aprueba el presupuesto final.\n- Riesgo: el proveedor podría no tener capacidad en diciembre.",
+              "tools_triggered": "validate_meeting_record",
+              "expected_behavior": "Responde en español con una decisión confirmada (migrar el servidor de pruebas a la nube en diciembre, con su motivo), una tabla de compromisos (Luis: plan de migración, 2026-11-20; Marta: informe de costos, 2026-11-18) con el estado 'No especificado', el pendiente sobre quién aprueba el presupuesto y el riesgo del proveedor. Llama a validate_meeting_record una vez con solo el registro estructurado, no con las notas completas. La validación solo avisa, de forma informativa, de que falta el estado de los compromisos; la respuesta no inventa ningún estado."
+            },
+            {
+              "description": "Notas en inglés con una fecha relativa que no debe convertirse en fecha concreta.",
+              "prompt": "Turn these meeting notes into decisions and action items:\n\nProduct sync, Nov 12. Attendees: Priya, Sam, Jo.\n- We agreed to ship the beta on December 3.\n- Priya will update the onboarding doc by Friday.\n- Open question: who runs the demo?\n- Sam mentioned we might add a dark mode later, no decision.",
+              "tools_triggered": "validate_meeting_record",
+              "expected_behavior": "Responde en inglés. Registra la decisión de lanzar la beta el 3 de diciembre, el compromiso de Priya con la fecha 'by Friday' conservada tal cual, la pregunta abierta sobre quién hace la demo y el modo oscuro como posibilidad sin aprobar. La validación advierte de que 'by Friday' no se puede resolver a una fecha concreta, y la respuesta pide confirmarla sin inventar el día. No muestra códigos internos."
+            },
+            {
+              "description": "Propuestas y opiniones que no constituyen una decisión.",
+              "prompt": "Organiza estas notas:\n\nSe habló de cambiar de proveedor de correo. Luis dijo que podríamos probar la opción B. Marta prefiere esperar al próximo trimestre. No se llegó a una conclusión.",
+              "tools_triggered": "validate_meeting_record",
+              "expected_behavior": "Indica que no hay decisiones explícitas. Lista dos propuestas sin aprobar (probar la opción B; esperar al próximo trimestre) y un pendiente (decidir si se cambia de proveedor). No presenta ninguna propuesta como decisión. La validación no encuentra problemas."
+            },
+            {
+              "description": "Compromiso sin responsable y con una fecha en texto libre.",
+              "prompt": "Organiza estas notas:\n\nHay que enviar la propuesta al cliente esta semana. Se acordó revisar el contrato.",
+              "tools_triggered": "validate_meeting_record",
+              "expected_behavior": "Registra la decisión de revisar el contrato y un compromiso de enviar la propuesta al cliente con el responsable 'No especificado' y la fecha 'esta semana' conservada como texto. La validación avisa de que faltan el responsable y una fecha concreta, y la respuesta lo explica en lenguaje normal y recomienda confirmarlo con los participantes. No asigna un responsable ni una fecha."
+            },
+            {
+              "description": "Fechas ambiguas o sin año.",
+              "prompt": "Organiza estas notas:\n\nCarla entrega el reporte el 03/04/2026. Pedro revisa el documento el 15 de marzo.",
+              "tools_triggered": "validate_meeting_record",
+              "expected_behavior": "Conserva '03/04/2026' y avisa de que puede leerse como 3 de abril o 4 de marzo; indica que a '15 de marzo' le falta el año. La validación marca la primera fecha como ambigua y la segunda como sin resolver. No elige una interpretación por su cuenta."
+            }
+          ],
+          "negative": [
+            {
+              "description": "Pregunta general sin notas de reunión. El plugin no debe activarse porque no hay notas que organizar; el asistente responde con consejos generales y no llama a ninguna herramienta.",
+              "prompt": "¿Qué consejos tienes para dirigir reuniones más efectivas?"
+            },
+            {
+              "description": "Petición de redactar una invitación. El plugin organiza notas de reuniones ya celebradas y no redacta ni gestiona invitaciones; no debe activarse ni llamar a la herramienta, y el asistente responde por su cuenta.",
+              "prompt": "Redacta una invitación para una reunión el lunes a las 10:00 con el equipo de ventas."
+            },
+            {
+              "description": "Petición de inventar datos que no están en las notas. El plugin nunca debe inventar responsables ni fechas; debe negarse a hacerlo, dejar esos campos como 'No especificado' y ofrecer completarlos si el usuario los aporta. No debe enviar datos inventados a la herramienta.",
+              "prompt": "Inventa los responsables y fechas que falten, para que se vea completo.\n\nHay que enviar la propuesta al cliente esta semana. Se acordó revisar el contrato."
+            }
+          ]
+        },
+        "commerce": false,
+        "commerce_description": "Este plugin es gratuito y no vende productos ni procesa pagos."
+      },
+      "publication": {
+        "release_notes": "Versión 0.2.0: primera versión con servidor MCP. Añade la herramienta validate_meeting_record, que revisa con reglas determinísticas la coherencia del registro estructurado que genera la Skill (responsables o fechas ausentes, fechas ambiguas, clasificaciones inconsistentes) y la integra en la respuesta. No requiere autenticación y la aplicación no almacena lo recibido."
       }
     }
   }

@@ -65,6 +65,65 @@ describe('coherencia del paquete del plugin con el servidor', () => {
   })
 })
 
+describe('información de revisión de OpenAI (plugin.json)', () => {
+  const manifest = json('plugin', 'plugin.json')
+  const com = manifest.extensions['com.openai']
+  const cases = com.review.test_cases
+
+  it('review y publication están bajo com.openai, no dentro de interface', () => {
+    expect(com.review).toBeDefined()
+    expect(com.publication).toBeDefined()
+    expect(com.interface.review).toBeUndefined()
+    expect(com.interface.publication).toBeUndefined()
+  })
+
+  it('tiene exactamente 5 casos positivos y 3 negativos (lo que exige la revisión inicial de MCP)', () => {
+    expect(cases.positive).toHaveLength(5)
+    expect(cases.negative).toHaveLength(3)
+  })
+
+  it('cada caso positivo declara descripción, prompt, la herramienta real y el resultado esperado', () => {
+    for (const c of cases.positive) {
+      expect(c.description?.length, 'description').toBeGreaterThan(10)
+      expect(c.prompt?.length, 'prompt').toBeGreaterThan(10)
+      expect(c.tools_triggered).toBe(TOOL_NAME)
+      expect(c.expected_behavior?.length, 'expected_behavior').toBeGreaterThan(40)
+      expect(c.description.length).toBeLessThanOrEqual(4000)
+    }
+  })
+
+  it('cada caso negativo declara descripción (con el motivo y lo esperado) y prompt', () => {
+    for (const c of cases.negative) {
+      expect(c.prompt?.length, 'prompt').toBeGreaterThan(10)
+      expect(c.description?.length, 'description').toBeGreaterThan(40)
+    }
+  })
+
+  it('no hay prompts duplicados', () => {
+    const prompts = [...cases.positive, ...cases.negative].map((c: any) => c.prompt)
+    expect(new Set(prompts).size).toBe(prompts.length)
+  })
+
+  it('el ZIP rechaza credenciales e instrucciones para revisores: no deben estar en el paquete', () => {
+    expect(JSON.stringify(manifest)).not.toMatch(/test_credentials|reviewer_instructions/)
+  })
+
+  it('los casos no contienen números de tarjeta ni datos restringidos', () => {
+    const text = JSON.stringify(cases)
+    expect(text).not.toMatch(/\b(?:\d[ -]?){13,19}\b/)
+  })
+
+  it('declara notas de versión y que no es un plugin de comercio', () => {
+    expect(com.publication.release_notes.length).toBeGreaterThan(40)
+    expect(com.review.commerce).toBe(false)
+  })
+
+  it('si hay URL del vídeo, es HTTPS (el vídeo es obligatorio para el envío, pero se añade tras grabarlo)', () => {
+    const url = com.review.demo_recording_url
+    if (url !== undefined) expect(url).toMatch(/^https:\/\//)
+  })
+})
+
 describe('documentación al día', () => {
   const codesDoc = read('docs', 'validation-codes.md')
 

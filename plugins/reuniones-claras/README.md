@@ -17,6 +17,7 @@ Plugin de Numen que convierte notas de reuniones en decisiones, compromisos, res
 - [Ejecución local y despliegue](docs/deployment.md)
 - [Lista de control para la publicación en ChatGPT](docs/chatgpt-submission-checklist.md)
 - [Conjunto de evaluación (prompts de prueba)](docs/evaluation-prompts.md)
+- [Guion del vídeo de demostración](docs/demo-video-script.md)
 
 ## Estado
 
