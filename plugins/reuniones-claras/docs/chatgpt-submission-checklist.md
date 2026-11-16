@@ -37,6 +37,7 @@ Fuente: documentación de OpenAI (Plugins), consultada en noviembre de 2026.
 | `SKILL.md` actualizado (paso de validación) | Implementado · Probado (coherencia con el servidor) |
 | ZIP con una sola raíz de plugin, sin `__MACOSX` ni `.DS_Store` | Implementado |
 | Incluir el MCP en el **ZIP inicial** del plugin nuevo | Implementado (el ZIP lo contiene) |
+| El portal identifica el plugin por `name` en `plugin.json`: subir un ZIP con el mismo `name` que el plugin skills-only existente da el error "Adding, removing, or replacing an MCP server isn't supported for existing plugins". Por eso el identificador es `reuniones-claras-mcp` (el nombre visible sigue siendo "Reuniones Claras") y el ZIP debe subirse con **Create a new plugin** | Implementado |
 | Versión nueva respecto a la ya subida (`0.2.0`) | Implementado |
 
 ## Información pública

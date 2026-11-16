@@ -1,6 +1,6 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
-  "name": "reuniones-claras",
+  "name": "reuniones-claras-mcp",
   "version": "0.2.0",
   "description": "Convierte notas de reuniones en decisiones, compromisos y próximos pasos claros.",
   "author": {
