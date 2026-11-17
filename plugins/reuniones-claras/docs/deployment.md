@@ -36,6 +36,8 @@ cd plugins/reuniones-claras
 
 Genera `dist/reuniones-claras-<versión>.zip` con los archivos del plugin **en la raíz del ZIP**, sin `__MACOSX` ni `.DS_Store`. OpenAI exige una sola raíz de plugin: un ZIP con la carpeta del plugin y una carpeta `__MACOSX` hermana (lo habitual al comprimir en macOS) incumple la regla `plugin_root_has_siblings`.
 
+Para Claude, el archivo `.skill` se genera con `./scripts/build-skill.sh` (ver [claude-setup.md](claude-setup.md)).
+
 ## Desplegar en Vercel (pasos que requieren al propietario)
 
 Nada de esto se ha hecho. Cada paso requiere autorización expresa.
