@@ -38,6 +38,7 @@ Fuente: documentación de OpenAI (Plugins), consultada en noviembre de 2026.
 | ZIP con una sola raíz de plugin, sin `__MACOSX` ni `.DS_Store` | Implementado |
 | Incluir el MCP en el **ZIP inicial** del plugin nuevo | Implementado (el ZIP lo contiene) |
 | El portal identifica el plugin por `name` en `plugin.json`: subir un ZIP con el mismo `name` que el plugin skills-only existente da el error "Adding, removing, or replacing an MCP server isn't supported for existing plugins". Por eso el identificador es `reuniones-claras-mcp` (el nombre visible sigue siendo "Reuniones Claras") y el ZIP debe subirse con **Create a new plugin** | Implementado |
+| El portal solo crea la *app* asociada al servidor MCP en la **primera subida de un plugin nuevo** (mensaje del portal: "No app is attached to this MCP server. Apps are created for the first supported remote MCP in a new plugin upload."). Renombrar el paquete y subirlo dentro de un plugin ya existente deja el servidor listado pero sin app (`associated_apps` vacío, `can_configure: false`) y sin botón Connect. Por eso el paquete se identifica como `reuniones-claras-app` y debe subirse desde la lista de plugins con **crear plugin nuevo**, nunca como nueva versión de un plugin existente | Implementado |
 | Versión nueva respecto a la ya subida (`0.2.0`) | Implementado |
 
 ## Información pública
