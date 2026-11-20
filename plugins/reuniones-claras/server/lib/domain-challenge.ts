@@ -3,4 +3,4 @@
  * Se sirve tal cual (solo el token, texto plano) en /.well-known/openai-apps-challenge.
  * No es un secreto: está pensado para ser público. Mientras esté vacío, la ruta responde 404.
  */
-export const OPENAI_APPS_CHALLENGE: string = ''
+export const OPENAI_APPS_CHALLENGE: string = 'lhARxV9YaC6Zfgq9XQdp48NSR1eb5w5GJYvAXZusVNk'
