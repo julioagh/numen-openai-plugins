@@ -49,6 +49,9 @@ unzip -o /ruta/a/reuniones-claras-0.2.0.zip -d ~/.codex/plugins/reuniones-claras
 
 4. Abre una conversación nueva y pega uno de los casos. Comprueba que se usan la Skill y la llamada a `validate_meeting_record`.
 
+## Si el plugin aparece pero la herramienta MCP no
+Plugin Creator indicó que, para probar en ChatGPT un plugin con MCP, la instalación local puede necesitar un `.app.json` que apunte a la **conexión registrada** en ChatGPT (la que se crea con *Add custom MCP server*, cuyo identificador `plugin_asdk_app…` aparece en la URL del navegador). Ese archivo es **solo para la copia local**: el ZIP de publicación pública **no** debe llevar `.app.json` ni `apps`, así que **no** lo añadas al paquete que subes al portal. No escribas ese archivo a mano; pídeselo a `@plugin-creator` (abajo) trabajando sobre una copia.
+
 ## Alternativa: dejar que `@plugin-creator` cree el marketplace
 OpenAI ofrece el plugin **Plugin Creator** (en la guía figura como `@plugin-creator` en modo Work, o `$plugin-creator` en Codex). Según la guía puede "conectar una carpeta de plugin que ya tienes a un marketplace local". Úsalo solo si los pasos manuales no hacen aparecer el plugin: puede reescribir archivos del plugin (crea un `.codex-plugin/plugin.json`) y conviene trabajar sobre una copia. Ejemplo de petición, adaptado de la guía: *"@plugin-creator conecta la carpeta ~/.codex/plugins/reuniones-claras-app2 a un marketplace personal para probarla localmente, sin modificar el plugin.json."*
 
