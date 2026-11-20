@@ -35,7 +35,7 @@ OpenAI exige, para plugins con MCP, **un vídeo que demuestre los casos de prueb
 - [ ] Añade **subtítulos** (ayuda a la accesibilidad y a los revisores).
 - [ ] Exporta en 1080p o más y revisa que el texto se lea.
 - [ ] Súbelo a un servicio de vídeo con enlace **sin listar** y comprueba que se abre en una **ventana privada, sin iniciar sesión**.
-- [ ] Copia la URL en `plugin/plugin.json`, en `extensions.com.openai.review.demo_recording_url`, y regenera el ZIP (`./scripts/build-plugin-zip.sh`). También puedes introducirla en el portal, en *Review information*.
+- [ ] Introduce la URL en el portal: *Metadata & Skills → Review information → Supporting content → Video walkthrough URL* y pulsa *Save details*. **No vuelvas a subir el ZIP solo para añadir la URL**: un ZIP con otro nombre de paquete crea otro plugin (ver el historial en `chatgpt-submission-checklist.md`). Si más adelante quieres que la URL también viaje en el paquete, añade `extensions.com.openai.review.demo_recording_url` en `plugin/plugin.json` y súbelo como nueva versión del mismo plugin, con el mismo `name`.
 - [ ] Conserva el vídeo disponible mientras dure la revisión.
 
 ## Si algo no sale como se espera
