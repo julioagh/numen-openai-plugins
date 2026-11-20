@@ -32,6 +32,8 @@ OpenAI exige, para plugins con MCP, **un vídeo que demuestre los casos de prueb
 
 ## Variante: grabar en ChatGPT con el conector personalizado (sin la Skill)
 
+> **Mejor alternativa**: instala el paquete completo (Skill y herramienta) en la app de escritorio de ChatGPT siguiendo [local-install-chatgpt-desktop.md](local-install-chatgpt-desktop.md). Usa esta variante solo si esa instalación no funciona en tu app o plan.
+
 El portal no permite probar el borrador antes de la revisión, y el plugin personal que se crea con *Add custom MCP server → Create as a plugin* expone **solo la herramienta**, sin la Skill (versión 1.0.0, categoría "Other": es otro objeto, no el borrador). Si grabas así:
 
 - **Dilo al inicio**, en voz o en un rótulo: "En esta grabación está conectada la herramienta de validación del servidor. La Skill, que organiza las notas, va en el paquete que se envía a revisión."
