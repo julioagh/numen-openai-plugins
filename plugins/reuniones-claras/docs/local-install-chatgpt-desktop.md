@@ -45,7 +45,12 @@ unzip -o /ruta/a/reuniones-claras-0.2.0.zip -d ~/.codex/plugins/reuniones-claras
 
 3. **Reinicia la app de escritorio de ChatGPT** y comprueba que *Reuniones Claras* aparece entre los plugins disponibles. Instálalo desde ahí.
 
+   Según la guía de OpenAI, cada marketplace aparece como una **fuente seleccionable** en el *Plugins Directory* (modo Work o Codex de la app de escritorio): abre el directorio y elige tu marketplace (`local-personal`) para ver el plugin. Opcionalmente puedes añadir `"interface": { "displayName": "Mis plugins locales" }` al marketplace para darle nombre.
+
 4. Abre una conversación nueva y pega uno de los casos. Comprueba que se usan la Skill y la llamada a `validate_meeting_record`.
+
+## Alternativa: dejar que `@plugin-creator` cree el marketplace
+OpenAI ofrece el plugin **Plugin Creator** (en la guía figura como `@plugin-creator` en modo Work, o `$plugin-creator` en Codex). Según la guía puede "conectar una carpeta de plugin que ya tienes a un marketplace local". Úsalo solo si los pasos manuales no hacen aparecer el plugin: puede reescribir archivos del plugin (crea un `.codex-plugin/plugin.json`) y conviene trabajar sobre una copia. Ejemplo de petición, adaptado de la guía: *"@plugin-creator conecta la carpeta ~/.codex/plugins/reuniones-claras-app2 a un marketplace personal para probarla localmente, sin modificar el plugin.json."*
 
 ## Deshacer
 
