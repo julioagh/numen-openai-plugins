@@ -22,6 +22,7 @@ export function jsonRpcError(status: number, code: number, message: string, extr
 const DEFAULT_ORIGINS = [
   'https://chatgpt.com',
   'https://chat.openai.com',
+  'https://platform.openai.com',
   'https://www.numen.la',
   'https://numen.la',
   'https://api.numen.la',
@@ -77,6 +78,21 @@ export async function readBodyWithLimit(req: Request, max: number): Promise<Uint
   return body
 }
 
+/**
+ * La especificación pide que el cliente envíe `Accept: application/json, text/event-stream`.
+ * Algunos clientes (escáneres, comprobaciones de conexión) omiten `Accept` o envían el
+ * comodín de cualquier tipo (asterisco, barra, asterisco). En esos dos casos se completa con ambos tipos.
+ * Un `Accept` explícito que excluye `text/event-stream` (por ejemplo solo `application/json`)
+ * se deja tal cual y el protocolo lo rechaza con 406.
+ */
+export function normalizeAccept(headers: Headers): Headers {
+  const accept = (headers.get('accept') ?? '').trim()
+  if (accept !== '' && accept !== '*/*') return headers
+  const out = new Headers(headers)
+  out.set('accept', 'application/json, text/event-stream')
+  return out
+}
+
 function withSafetyHeaders(res: Response): Response {
   const headers = new Headers(res.headers)
   headers.set('cache-control', 'no-store')
@@ -105,7 +121,7 @@ export function createGuardedHandler(
     if (body === null) return jsonRpcError(413, -32600, 'Request too large')
 
     try {
-      const forwarded = new Request(req.url, { method: 'POST', headers: req.headers, body: body as BodyInit })
+      const forwarded = new Request(req.url, { method: 'POST', headers: normalizeAccept(req.headers), body: body as BodyInit })
       return withSafetyHeaders(await inner(forwarded))
     } catch {
       return jsonRpcError(500, -32603, 'Internal error')

@@ -191,6 +191,16 @@ describe('capa HTTP', () => {
     expect((await post(body)).status).toBe(200)
   })
 
+  it('acepta clientes que omiten Accept o envían */*, y el origen del portal de OpenAI', async () => {
+    const body = JSON.stringify({ jsonrpc: '2.0', id: 1, method: 'tools/list' })
+    const json = { 'content-type': 'application/json' }
+    expect((await post(body, json)).status).toBe(200)
+    expect((await post(body, { ...json, accept: '*/*' })).status).toBe(200)
+    expect((await post(body, { ...HEADERS, origin: 'https://platform.openai.com' })).status).toBe(200)
+    // Un Accept explícito que excluye text/event-stream sigue rechazándose.
+    expect((await post(body, { ...json, accept: 'application/json' })).status).toBe(406)
+  })
+
   it('rechaza solicitudes demasiado grandes (413)', async () => {
     const big = JSON.stringify({ jsonrpc: '2.0', id: 1, method: 'tools/list', params: { pad: 'x'.repeat(LIMITS.MAX_BODY_BYTES + 10) } })
     const r = await post(big)

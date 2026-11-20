@@ -100,13 +100,15 @@ La respuesta incluye también `content[0].text` con el mismo resultado en texto 
 |---|---|
 | `GET`, `DELETE`, `OPTIONS` | 405 con `Allow: POST` |
 | `Content-Type` distinto de `application/json` | 415 |
+| `Accept` explícito que excluye `text/event-stream` (por ejemplo solo `application/json`) | 406 |
+| `Accept` ausente, vacío o comodín de cualquier tipo | Se completa con `application/json, text/event-stream` y se atiende |
 | `Origin` presente y no permitido | 403 |
 | Cuerpo mayor al límite (con o sin `Content-Length`) | 413 |
 | JSON inválido | 400, código JSON-RPC `-32700` |
 | Método MCP inexistente | `-32601` |
 | Fallo interno | 500 genérico, sin datos |
 
-Llamadas sin `Origin` (servidor a servidor, como ChatGPT) se aceptan. Si un navegador envía `Origin`, debe estar en la lista permitida (la especificación MCP exige validarlo contra DNS rebinding): `chatgpt.com`, `chat.openai.com`, `www.numen.la`, `numen.la`, `api.numen.la`; se pueden añadir más con la variable `MCP_ALLOWED_ORIGINS` (separadas por comas). Fuera de producción también se aceptan `localhost` y `127.0.0.1`.
+Llamadas sin `Origin` (servidor a servidor, como ChatGPT) se aceptan. Si un navegador envía `Origin`, debe estar en la lista permitida (la especificación MCP exige validarlo contra DNS rebinding): `chatgpt.com`, `chat.openai.com`, `platform.openai.com`, `www.numen.la`, `numen.la`, `api.numen.la`; se pueden añadir más con la variable `MCP_ALLOWED_ORIGINS` (separadas por comas). Fuera de producción también se aceptan `localhost` y `127.0.0.1`.
 
 No hay CORS: los clientes previstos llaman de servidor a servidor.
 

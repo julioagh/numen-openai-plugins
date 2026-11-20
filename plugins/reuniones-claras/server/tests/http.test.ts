@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest'
-import { allowedOrigins, createGuardedHandler, isOriginAllowed } from '../lib/mcp/http'
+import { allowedOrigins, createGuardedHandler, isOriginAllowed, normalizeAccept } from '../lib/mcp/http'
 
 const prod = { NODE_ENV: 'production' }
 const dev = { NODE_ENV: 'development' }
@@ -9,7 +9,7 @@ describe('isOriginAllowed', () => {
     expect(isOriginAllowed(null, prod)).toBe(true)
   })
   it('acepta los orígenes por defecto', () => {
-    for (const o of ['https://chatgpt.com', 'https://chat.openai.com', 'https://www.numen.la', 'https://api.numen.la']) {
+    for (const o of ['https://chatgpt.com', 'https://chat.openai.com', 'https://platform.openai.com', 'https://www.numen.la', 'https://api.numen.la']) {
       expect(isOriginAllowed(o, prod)).toBe(true)
     }
   })
@@ -67,5 +67,26 @@ describe('createGuardedHandler', () => {
     expect(called).toBe(0)
     expect((await handler(req())).status).toBe(200)
     expect(called).toBe(1)
+  })
+})
+
+describe('normalizeAccept', () => {
+  const h = (accept?: string) => new Headers(accept === undefined ? {} : { accept })
+  const BOTH = 'application/json, text/event-stream'
+
+  it('completa un Accept ausente, vacío o */*', () => {
+    expect(normalizeAccept(h()).get('accept')).toBe(BOTH)
+    expect(normalizeAccept(h('')).get('accept')).toBe(BOTH)
+    expect(normalizeAccept(h('*/*')).get('accept')).toBe(BOTH)
+  })
+  it('no cambia un Accept explícito', () => {
+    expect(normalizeAccept(h(BOTH)).get('accept')).toBe(BOTH)
+    expect(normalizeAccept(h('application/json')).get('accept')).toBe('application/json')
+    expect(normalizeAccept(h('text/event-stream')).get('accept')).toBe('text/event-stream')
+  })
+  it('no modifica los encabezados originales', () => {
+    const original = h('*/*')
+    normalizeAccept(original)
+    expect(original.get('accept')).toBe('*/*')
   })
 })
