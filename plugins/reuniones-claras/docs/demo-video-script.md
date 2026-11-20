@@ -30,6 +30,17 @@ OpenAI exige, para plugins con MCP, **un vídeo que demuestre los casos de prueb
 | 4:20 a 4:50 | Privacidad y límites | Página de privacidad `https://www.numen.la/plugins/reuniones-claras/privacidad` | "El servidor recibe temporalmente un registro estructurado, lo procesa en memoria y no lo almacena. Y la validación solo revisa la coherencia: no confirma que los acuerdos hayan ocurrido." |
 | 4:50 a 5:00 | Cierre | Página de soporte | "Soporte en info@numen.la. Gracias." |
 
+## Variante: grabar en ChatGPT con el conector personalizado (sin la Skill)
+
+El portal no permite probar el borrador antes de la revisión, y el plugin personal que se crea con *Add custom MCP server → Create as a plugin* expone **solo la herramienta**, sin la Skill (versión 1.0.0, categoría "Other": es otro objeto, no el borrador). Si grabas así:
+
+- **Dilo al inicio**, en voz o en un rótulo: "En esta grabación está conectada la herramienta de validación del servidor. La Skill, que organiza las notas, va en el paquete que se envía a revisión."
+- **Invoca el plugin con `@`**: en ChatGPT, en una conversación nueva, escribe `@`, elige *Reuniones claras* y pega el caso. Si no lo mencionas, el modelo puede no llamar a la herramienta.
+- **Qué se verá y qué no**: en los casos positivos se ve la llamada a `validate_meeting_record` y sus avisos (por ejemplo, la fecha relativa "by Friday", el responsable ausente, la fecha ambigua o sin año). **No** se verá el resultado organizado por secciones, porque eso lo hace la Skill.
+- **Negativo 3 (inventar datos)**: sin la Skill, ChatGPT puede **obedecer** y rellenar los datos. Ensáyalo antes. Si inventa, no lo grabes con este conector: muéstralo en Claude (conector más Skill), donde sí se niega, y dilo en la narración.
+- **Negativos 1 y 2 (consejos generales, invitación)**: sirven igual; la herramienta no debe llamarse.
+- **No lo presentes como el plugin final**: la versión, la categoría y la web que muestra ChatGPT son las del conector, no las del borrador.
+
 ## Después de grabar
 
 - [ ] Añade **subtítulos** (ayuda a la accesibilidad y a los revisores).
